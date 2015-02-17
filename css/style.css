@@ -1,4 +1,139 @@
 body {
-  font-family: Verdana, Helvetica, sans-serif;
-  background-color: #DDDDDD;
+  font-family: Lato, sans-serif;;
+}
+
+#topbar {
+  font-size: 0.8em;
+  text-align: right;
+}
+
+article {
+  width: 80%;
+  margin: 5px auto;
+  padding: 10px;
+  overflow: auto;
+}
+
+h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 1.5em;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  font-weight: bold;  
+  line-height: 1.2em;
+  text-align: center; 
+}
+
+em {
+  font-style: italic;
+  font-weight: bold;
+}
+
+form {
+  margin-top: 10px;
+  margin-left: 60px;
+  padding: 10px;
+  border: 3px solid #4EA0D8;
+  border-radius: 5px;
+  overflow: auto;
+  background: #F4F4F4;
+  width: 80%;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+form label {
+  display: inline-block;
+  width: 150px;
+  font-weight: bold;
+}
+
+.rb {
+  width: auto;
+  font-weight: normal;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+
+.cb {
+  width: auto;
+  font-weight: normal;
+  padding-right: 10px;
+  padding-bottom: 5px;
+}
+
+form input {
+  border: #CCC 1px solid;
+  border-radius: 5px;
+  width: 50%;
+  height: 25px;  
+}
+
+form input[type='radio'] {
+  border: #CCC 1px solid;
+  border-radius: 5px;
+  width: auto;
+  height: auto;  
+}
+
+form input[type='checkbox'] {
+  border: #CCC 1px solid;
+  border-radius: 5px;
+  width: auto;
+  height: auto;
+}
+
+form select {
+  border: #CCC 1px solid;
+  border-radius: 5px;
+  height: 25px;
+  width: 50%;
+}
+
+form textarea {
+  border: #CCC 1px solid;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 50%;
+  height: auto;
+}
+
+label, textarea{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+form input[type='submit'] {
+  border: 0;
+  height: auto;
+  width: 80px;
+  padding: 10px 10px;
+  color: #FFF;
+  background: #FA6E3E;
+  float: right;
+  display: block;
+}
+
+form input[type='submit']:hover {
+  background: #D55427;
+  cursor: pointer;
+}
+
+form .content-footer p {
+  font-style: italic;
+  text-align: center;
+  color: #666;
+  font-size: 80%;
+}
+
+footer {
+  font-size: 0.8em;
+  padding-top: 10px;
+  text-align: center;
 }

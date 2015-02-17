@@ -54,7 +54,7 @@ class AddPage(webapp2.RequestHandler):
         contact = Contact()
 
         if users.get_current_user():
-            contact.author = Person(
+            contact.friend = Person(
                     identity=users.get_current_user().user_id(),
                     email=users.get_current_user().email())
         contact.name = self.request.get('cname')
@@ -62,7 +62,7 @@ class AddPage(webapp2.RequestHandler):
         contact.mobileos = list(self.request.get_all('cmobileos'))
         contact.browser = self.request.get('cbrowser')
         contact.remark = self.request.get('cremark')
-        contact.put()
+        contact.put() # commit change
 
         self.redirect('/')
 

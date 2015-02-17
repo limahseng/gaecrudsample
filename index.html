@@ -5,60 +5,69 @@
     <meta charset="UTF-8" />
     <title>CRUD Me!</title>
     <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato" />
   </head>
   <body>
-    <a href="{{ url|safe }}">{{ url_linktext }}</a>
- 
-    <hr />
+    <article>
+      <section id="topbar">
+        <a href="{{ url|safe }}">{{ url_linktext }}</a>
+      </section>
+   
+      <hr />
+      <h1>My Contacts</h1>
+      {% for contact in contacts %}
+        {% if contact.friend %}
+          <em>{{ contact.friend.email }}
+            {% if user and user.user_id() == contact.friend.identity %}
+              (You)
+            {% endif %}
+          </em> at {{ contact.date.strftime("%d-%m-%Y %H:%M:%S") }}:
+        {% else %}
+          <em>Anonymous</em>:
+        {% endif %}
+        <blockquote>
+          {{ contact.name }},{{ contact.gender }},{{ contact.mobileos }},{{ contact.browser }},{{ contact.remark }}
+        </blockquote>
+      {% endfor %}
 
-    {% for contact in contacts %}
-      {% if contact.friend %}
-        <b>{{ contact.friend.email }}
-          {% if user and user.user_id() == contact.friend.identity %}
-            (You)
-          {% endif %}
-        </b> at {{ contact.date.strftime("%d-%m-%Y %H:%M:%S") }}:
-      {% else %}
-        Anonymous:
-      {% endif %}
-      <blockquote>
-        {{ contact.name }},{{ contact.gender }},{{ contact.mobileos }},{{ contact.browser }},{{ contact.remark }}
-      </blockquote>
-    {% endfor %}
+      <hr />
 
-    <hr />
-
-    <form action="/add" method="post">
-      <div>
-        <label for="cname">Name:</label>
-        <input id="cname" name="cname" required />
-        <br />
-        <label for="cgender">Gender:</label>
-        <input type="radio" name="cgender" value="m"/>Male
-        <input type="radio" name="cgender" value="f"/>Female<br />        
-        <br />
-        <label for="cmobileos">Mobile OS:</label>
-        <input type="checkbox" name="cmobileos" value="and" />Android
-        <input type="checkbox" name="cmobileos" value="ios" />iOS
-        <input type="checkbox" name="cmobileos" value="oth" />Others
-        <br />   
-        <label for="cbrowser">Favorite browser: </label>
-        <select id="cbrowser" name="cbrowser">
-          <option value="goo">Google Chrome</option>
-          <option value="moz">Mozilla Firefox</option>
-          <option value="msi">Microsoft Internet Explorer</option>
-          <option value="app">Apple Safari</option>
-          <option value="oth">Others</option>
-        </select>
-        <br />        
-        <label for="cremark">Remark:</label>
-        <textarea id="cremark" name="cremark" rows="3" cols="60" required></textarea>
-        <br />
-        <input type="submit" value="Add" />
-      </div>
-    </form>
-
+      <h2>Add a contact</h2>
+      <form action="/add" method="post">
+        <div>
+          <label for="cname">Name:</label>
+          <input id="cname" name="cname" required />
+          <br />
+          <label for="cgender">Gender:</label>
+          <label class="rb"><input type="radio" name="cgender" value="m"/>Male</label>
+          <label class="rb"><input type="radio" name="cgender" value="f"/>Female</label><br />        
+          <br />
+          <label for="cmobileos">Mobile OS:</label>
+          <label class="cb"><input type="checkbox" name="cmobileos" value="and" />Android</label>
+          <label class="cb"><input type="checkbox" name="cmobileos" value="ios" />iOS</label>
+          <label class="cb"><input type="checkbox" name="cmobileos" value="oth" />Others</label>
+          <br />   
+          <label for="cbrowser">Favorite browser: </label>
+          <select id="cbrowser" name="cbrowser">
+            <option value="goo">Google Chrome</option>
+            <option value="moz">Mozilla Firefox</option>
+            <option value="msi">Microsoft Internet Explorer</option>
+            <option value="app">Apple Safari</option>
+            <option value="oth">Others</option>
+          </select>
+          <br />        
+          <label id="lremark" for="cremark">Remark:</label>
+          <textarea id="cremark" name="cremark" rows="3" cols="60" required></textarea>
+          <br />
+          <input type="submit" value="Add" />
+        </div>
+      </form>
+      <footer>
+        <p>&copy; 2015 Make it harder.
+      </footer>
+    </article>
   </body>
 </html>
 {% endautoescape %}
