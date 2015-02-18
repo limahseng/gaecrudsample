@@ -16,22 +16,35 @@
       </section>
    
       <hr />
-      <h1>My Contacts</h1>
-      {% for contact in contacts %}
-        {% if contact.friend %}
-          <em>{{ contact.friend.email }}
+      <table>
+        <tr>
+          <th>Timestamp</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Mobile OS</th>
+          <th>Favourite Browser</th>
+          <th>Remark</th>
+          <th>Action</th>
+        </tr>
+      {% if user %}
+        <h1>{{ user.email() }} Contacts</h1>
+        {% for contact in contacts %}
+          {% if contact.friend %}
             {% if user and user.user_id() == contact.friend.identity %}
-              (You)
+              <tr>
+                <td>{{ contact.date.strftime("%d-%m-%Y %H:%M:%S") }}</td>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.gender }}</td>
+                <td>{{ contact.mobileos }}</td>
+                <td>{{ contact.browser }}</td>
+                <td>{{ contact.remark }}</td>
+                <td>Delete</td>
+              </tr>
             {% endif %}
-          </em> at {{ contact.date.strftime("%d-%m-%Y %H:%M:%S") }}:
-        {% else %}
-          <em>Anonymous</em>:
-        {% endif %}
-        <blockquote>
-          {{ contact.name }},{{ contact.gender }},{{ contact.mobileos }},{{ contact.browser }},{{ contact.remark }}
-        </blockquote>
-      {% endfor %}
-
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      </table>
       <hr />
 
       <h2>Add a contact</h2>
@@ -40,11 +53,11 @@
           <label for="cname">Name:</label>
           <input id="cname" name="cname" required />
           <br />
-          <label for="cgender">Gender:</label>
+          <label>Gender:</label>
           <label class="rb"><input type="radio" name="cgender" value="m"/>Male</label>
           <label class="rb"><input type="radio" name="cgender" value="f"/>Female</label><br />        
           <br />
-          <label for="cmobileos">Mobile OS:</label>
+          <label>Mobile OS:</label>
           <label class="cb"><input type="checkbox" name="cmobileos" value="and" />Android</label>
           <label class="cb"><input type="checkbox" name="cmobileos" value="ios" />iOS</label>
           <label class="cb"><input type="checkbox" name="cmobileos" value="oth" />Others</label>

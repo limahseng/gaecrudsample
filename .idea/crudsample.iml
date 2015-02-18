@@ -3,8 +3,8 @@
   <component name="FacetManager">
     <facet type="google-appengine-python" name="Google App Engine (Python)">
       <configuration>
-        <option name="rootFolder" value="$USER_HOME$/PycharmProjects/crudsample" />
-        <option name="sdkFolder" value="$USER_HOME$/google_appengine" />
+        <option name="rootFolder" value="C:\Users\SoongChee\PycharmProjects\gaecrudsample" />
+        <option name="sdkFolder" value="C:/Program Files (x86)/Google/google_appengine" />
         <option name="templatesFolder" value="" />
         <option name="email" value="lim.ahseng@dhs.sg" />
         <option name="gp" value="dff9df9bdf98df99df9edf9fdf9cdf9ddfeb" />
